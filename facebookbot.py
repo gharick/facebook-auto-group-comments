@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import time
 import re
 
+from locators import LoginPageLocators, PostToGroupsLocators
+
 class FacebookBot:
     drive = None
 
@@ -15,9 +17,8 @@ class FacebookBot:
 
         # Login to facebook
         print("Logging into facebook...")
-        usr_elem = self.driver.find_element_by_css_selector('#m_login_email')
-        pwd_elem = self.driver.find_element_by_css_selector(
-            '#login_form > ul > li:nth-child(2) > div > input')
+        usr_elem = self.driver.find_element(*LoginPageLocators.USR_ELEM)
+        pwd_elem = self.driver.find_element(*LoginPageLocators.PWD_ELEM)
 
         usr_elem.send_keys(username)
         pwd_elem.send_keys(password)
@@ -44,8 +45,8 @@ class FacebookBot:
         for i, group in enumerate(groups):
             self.driver.get(group)
             try:
-                post_elem = self.driver.find_element_by_css_selector('#u_0_0')
-                sub_elem = self.driver.find_element_by_name('Post')
+                post_elem = self.driver.find_element(*PostToGroupsLocators.POST_ELEM)
+                sub_elem = self.driver.find_element(*PostToGroupsLocators.SUB_ELEM)
 
                 post_elem.send_keys(post)
                 sub_elem.click()
