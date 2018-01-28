@@ -1,10 +1,11 @@
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from bs4 import BeautifulSoup
+from locators import LoginPageLocators, PostToGroupsLocators
+
 import time
 import re
 
-from locators import LoginPageLocators, PostToGroupsLocators
 
 class FacebookBot:
     drive = None
@@ -36,7 +37,7 @@ class FacebookBot:
         for group in soup.find_all("a", href=re.compile(r"groups/\d")):
             groups.append("https://mbasic.facebook.com" + group['href'])
 
-        print(f"{len(groups)} groups found in profile.")
+        print("{} groups found in profile.".format(len(groups)))
 
         return groups
 
@@ -51,8 +52,8 @@ class FacebookBot:
                 post_elem.send_keys(post)
                 sub_elem.click()
 
-                print(f"Sucessfully posted in group #{i}.")
+                print("Sucessfully posted in group #{}.".format(i))
                 time.sleep(interval)
             except NoSuchElementException:
-                print(f"Can't post in group #{i}.")
+                print("Can't post in group #{}.".format(i))
                 continue
