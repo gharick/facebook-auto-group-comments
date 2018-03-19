@@ -1,17 +1,22 @@
 from selenium import webdriver
 from facebookbot import FacebookBot
 
-usr = input('Username: ')
-pwd = input('Password: ')
 
-# Initiate webdriver - PhantomJS
-print("Iniatiating PhantomJS")
-driver = webdriver.PhantomJS()
+def main():
+    usr = input('Username: ')
+    pwd = input('Password: ')
 
-myBot = FacebookBot(driver)
-myBot.login(usr, pwd)
+    # Initiate webdriver - PhantomJS
+    print("Iniatiating PhantomJS")
+    driver = webdriver.PhantomJS()
 
-groups = myBot.collect_groups()
+    myBot = FacebookBot(driver)
+    myBot.login(usr, pwd)
 
-post = """ Sample Post """ # change this to what you will post to each group
-myBot.post_to_groups(post, 500, groups)
+    groups = myBot.collect_groups()
+
+    post = """ Sample Post """ # change this to what you will post to each group
+    myBot.post_to_groups(post, 500, groups)
+
+if __name__ == '__main__':
+    main()

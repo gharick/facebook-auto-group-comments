@@ -1,0 +1,6 @@
+.idea
+venv
+__pycache__
+geckodriver.log
+ghostdriver.log
+locators/__pycache__/
