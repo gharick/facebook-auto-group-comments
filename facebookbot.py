@@ -1,10 +1,23 @@
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from bs4 import BeautifulSoup
-from locators import LoginPageLocators, PostToGroupsLocators
-
 import time
 import re
+from selenium.webdriver.common.by import By
+
+
+
+
+class LoginPageLocators(object):
+    USR_ELEM = (By.CSS_SELECTOR, '#m_login_email')
+    PWD_ELEM = (By.CSS_SELECTOR,
+                '#login_form > ul > li:nth-child(2) > div > input')
+
+
+class PostToGroupsLocators(object):
+    POST_ELEM = (By.CSS_SELECTOR, '#u_0_0')
+    SUB_ELEM = (By.NAME, 'Post')
+
 
 
 class FacebookBot:
