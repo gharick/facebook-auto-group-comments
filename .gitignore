@@ -4,3 +4,5 @@ __pycache__
 geckodriver.log
 ghostdriver.log
 locators/__pycache__/
+env
+*.pyc
