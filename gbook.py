@@ -3,15 +3,15 @@ from facebookbot import FacebookBot
 
 
 def main():
-    usr = input('Username: ')
-    pwd = input('Password: ')
+    usr = raw_input('Username: ')
+    pwd = raw_input('Password: ')
 
     # Initiate webdriver - PhantomJS
     print("Iniatiating PhantomJS")
     driver = webdriver.PhantomJS()
 
     myBot = FacebookBot(driver)
-    myBot.login(usr, pwd)
+    myBot.login(str(usr), str(pwd))
 
     groups = myBot.collect_groups()
 
