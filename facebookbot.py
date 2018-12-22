@@ -64,7 +64,7 @@ class FacebookBot:
         source = self.driver.page_source
         soup = BeautifulSoup(source, "html.parser")
 
-        for group in soup.find_all("a", href=re.compile(r"groups/\d")):
+        for group in soup.find_all("a", href=re.compile(r"groups/")): #it's not always a number
             groups.append(self.URL + group['href'])
 
         print("{} groups found in profile.".format(len(groups)))
